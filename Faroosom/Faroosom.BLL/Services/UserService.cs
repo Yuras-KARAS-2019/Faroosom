@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Authentication;
 using System.Threading.Tasks;
 
 namespace Faroosom.BLL.Services
@@ -14,7 +15,7 @@ namespace Faroosom.BLL.Services
     {
         private readonly FaroosomContext _context;
 
-        UserService(FaroosomContext context)
+        public UserService(FaroosomContext context)
         {
             _context = context ?? throw new NullReferenceException(nameof(context));
         }
@@ -31,10 +32,10 @@ namespace Faroosom.BLL.Services
             }).ToListAsync();
         }
 
-        public async Task<UserDto> GetUserByIdAsync(int userid)
+        public async Task<UserDto> GetUserByIdAsync(int userId)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == userid) ??
-                       throw new KeyNotFoundException($"User Id = {userid} does not exist with");
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == userId) ??
+                throw new KeyNotFoundException($"Subcrciption does not exist with");
             var result = new UserDto
             {
                 Id = user.Id,
@@ -62,7 +63,7 @@ namespace Faroosom.BLL.Services
         {
             var subscription = await _context.Subscriptions.FirstOrDefaultAsync(x =>
                                    x.PublisherId == x.PublisherId &&
-                                   x.SubscriberId == subscriberId) ?? throw new KeyNotFoundException("Мимо чел");
+                                   x.SubscriberId == subscriberId) ?? throw new KeyNotFoundException($"Subcrciption does not exist with");
             _context.Subscriptions.Remove(subscription);
             await _context.SaveChangesAsync();
         }
@@ -93,6 +94,44 @@ namespace Faroosom.BLL.Services
                     LastName = x.Subscriber.LastName,
                     Login = x.Subscriber.Login
                 }).ToListAsync();
+        }
+
+        public async Task<UserDto> CreateUserAsync(CreateUserDto dto)
+        {
+            var user = new User
+            {
+                Age = dto.Age,
+                LastName = dto.LastName,
+                Login = dto.Login,
+                Name = dto.Name,
+                Password = dto.Password
+            };
+
+            await _context.Users.AddAsync(user);
+            await _context.SaveChangesAsync();
+            return new UserDto
+            {
+                Id = user.Id,
+                Age = user.Age,
+                Name = user.Name,
+                LastName = user.LastName,
+                Login = user.Login
+            };
+        }
+
+        public async Task<UserDto> GetUserByCredentialsAsync(CredentialsDto dto)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Login == dto.Login && x.Password == dto.Password)
+                ?? throw new AuthenticationException("Incorrect login or password");
+            return new UserDto
+            {
+                Id = user.Id,
+                Age = user.Age,
+                Name = user.Name,
+                LastName = user.LastName,
+                Login = user.Login
+            };
+
         }
     }
 }

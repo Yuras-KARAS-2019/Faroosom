@@ -1,3 +1,5 @@
+using Faroosom.BLL.Interfaces;
+using Faroosom.BLL.Services;
 using Faroosom.DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,6 +29,11 @@ namespace Faroosom.API
             var connectionString = Configuration["ConnectionString"];
             services.AddDbContext<FaroosomContext>(options =>
                 options.UseSqlServer(connectionString, opt => opt.MigrationsAssembly(typeof(FaroosomContext).Assembly.GetName().Name)));
+            
+            
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IMessageService, MessageServise>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,7 +52,7 @@ namespace Faroosom.API
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+            app.UseEndpoints(endpoints => endpoints.MapControllers());
         }
     }
 }

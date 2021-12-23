@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Faroosom.BLL\Faroosom.BLL.csproj" />
     <ProjectReference Include="..\Faroosom.DAL\Faroosom.DAL.csproj" />
   </ItemGroup>
 
