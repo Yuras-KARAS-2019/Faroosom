@@ -88,11 +88,11 @@ namespace Faroosom.BLL.Services
                 .Where(x => x.SubscriberId == userId)
                 .Select(x => new UserDto
                 {
-                    Id = x.Subscriber.Id,
-                    Age = x.Subscriber.Age,
-                    Name = x.Subscriber.Name,
-                    LastName = x.Subscriber.LastName,
-                    Login = x.Subscriber.Login
+                    Id = x.Publisher.Id,
+                    Age = x.Publisher.Age,
+                    Name = x.Publisher.Name,
+                    LastName = x.Publisher.LastName,
+                    Login = x.Publisher.Login
                 }).ToListAsync();
         }
 

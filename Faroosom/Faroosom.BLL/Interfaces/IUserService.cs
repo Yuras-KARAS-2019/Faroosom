@@ -11,7 +11,7 @@ namespace Faroosom.BLL.Interfaces
     {
         Task<ICollection<UserDto>> GetAllUsersAsync();
         Task<UserDto> GetUserByIdAsync(int userId);
-        Task<UserDto> GetUserByCredentialsAsync(CreateUserDto dto);
+        Task<UserDto> GetUserByCredentialsAsync(CredentialsDto dto);
 
         Task SubscribeAsync(int subscriberId, int publisherId);
         Task UnsubscribeAsync(int subscriberId, int publisherId);
