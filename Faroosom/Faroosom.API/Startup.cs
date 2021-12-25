@@ -34,6 +34,14 @@ namespace Faroosom.API
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IMessageService, MessageServise>();
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AnyOrigin", x => x
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +53,7 @@ namespace Faroosom.API
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Faroosom.API v1"));
             }
+            app.UseCors("AnyOrigin");
 
             app.UseHttpsRedirection();
 

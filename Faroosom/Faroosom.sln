@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Faroosom.DAL", "Faroosom.DA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Faroosom.BLL", "Faroosom.BLL\Faroosom.BLL.csproj", "{2A0641B0-F887-489A-979B-E88B26524EE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Faroosom.ConsoleApp", "Faroosom.ConsoleApp\Faroosom.ConsoleApp.csproj", "{92EBE28B-FA84-41B8-BB5E-822A39E3EBD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Faroosom.ConsoleApp", "Faroosom.ConsoleApp\Faroosom.ConsoleApp.csproj", "{92EBE28B-FA84-41B8-BB5E-822A39E3EBD8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Faroosom.APIClient", "Faroosom.APIClient\Faroosom.APIClient.csproj", "{38661FC0-A816-44A9-80D1-54424952F1ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{92EBE28B-FA84-41B8-BB5E-822A39E3EBD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92EBE28B-FA84-41B8-BB5E-822A39E3EBD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92EBE28B-FA84-41B8-BB5E-822A39E3EBD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38661FC0-A816-44A9-80D1-54424952F1ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38661FC0-A816-44A9-80D1-54424952F1ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38661FC0-A816-44A9-80D1-54424952F1ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38661FC0-A816-44A9-80D1-54424952F1ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

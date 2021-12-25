@@ -62,8 +62,9 @@ namespace Faroosom.BLL.Services
         public async Task UnsubscribeAsync(int subscriberId, int publisherId)
         {
             var subscription = await _context.Subscriptions.FirstOrDefaultAsync(x =>
-                                   x.PublisherId == x.PublisherId &&
-                                   x.SubscriberId == subscriberId) ?? throw new KeyNotFoundException($"Subcrciption does not exist with");
+                                   x.PublisherId == publisherId &&
+                                   x.SubscriberId == subscriberId) 
+                ?? throw new KeyNotFoundException($"Subcrciption does not exist with");
             _context.Subscriptions.Remove(subscription);
             await _context.SaveChangesAsync();
         }
