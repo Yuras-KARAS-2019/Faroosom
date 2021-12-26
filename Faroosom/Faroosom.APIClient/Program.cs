@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Json;
-using System.Security.Authentication;
 using System.Threading.Tasks;
 
 namespace Faroosom.APIClient

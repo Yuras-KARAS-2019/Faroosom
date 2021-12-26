@@ -56,7 +56,6 @@ namespace Faroosom.BLL.Services
             };
             await _context.Subscriptions.AddAsync(subscription);
             await _context.SaveChangesAsync();
-
         }
 
         public async Task UnsubscribeAsync(int subscriberId, int publisherId)
