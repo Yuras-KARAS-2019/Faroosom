@@ -31,13 +31,13 @@ namespace Faroosom.BLL.Tests
 
 
         [Fact]
-        public async Task GetUserByIdAsync_WhenNotExists_ThrowsKeyNotFoundException()
+        public async Task GetUserByIdAsync_NotExists_ThrowsKeyNotFoundException()
         {
             await Assert.ThrowsAsync<KeyNotFoundException>(async () => await _service.GetUserByIdAsync(-1));
         }
 
         [Fact]
-        public async Task GetUserByIdAsync_WhenExists_Success()
+        public async Task GetUserByIdAsync_Exists_Success()
         {
             var user1 = await _service.CreateUserAsync(new CreateUserDto
             {
@@ -71,7 +71,7 @@ namespace Faroosom.BLL.Tests
             await _service.SubscribeAsync(user1.Id, user2.Id);
             var actualSubscribtion = await _context.Subscriptions.FirstOrDefaultAsync(s => s.PublisherId == user2.Id && s.SubscriberId == user1.Id);
             Assert.NotNull(actualSubscribtion);
-            Assert.Equal(user2.Id,actualSubscribtion.PublisherId);
+            Assert.Equal(user2.Id, actualSubscribtion.PublisherId);
             Assert.Equal(user1.Id, actualSubscribtion.SubscriberId);
         }
 
@@ -135,7 +135,7 @@ namespace Faroosom.BLL.Tests
             var subscribtions = await _service.GetAllSubscriptionByIdAsync(user1.Id);
 
             //Assert
-            Assert.Contains(user2,subscribtions);
+            Assert.Contains(user2, subscribtions);
             Assert.Contains(user3, subscribtions);
         }
 

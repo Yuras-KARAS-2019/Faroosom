@@ -39,7 +39,7 @@ namespace Faroosom.ConsoleApp
                     switch (Console.ReadLine())
                     {
                         case "1":
-                            await ShawAllUsers();
+                            await ShowAllUsers();
                             break;
                         case "2":
                             await ShowMySubcriptions();
@@ -71,9 +71,7 @@ namespace Faroosom.ConsoleApp
                 {
                     Console.WriteLine("Усе погано");
                 }
-
             }
-
         }
 
         static async Task SendMessageToUser()
@@ -115,7 +113,7 @@ namespace Faroosom.ConsoleApp
             await _userService.SubscribeAsync(_user.Id, id);
         }
 
-        static async Task ShawAllUsers()
+        static async Task ShowAllUsers()
         {
             var users = await _userService.GetAllUsersAsync();
             foreach (var user in users)
@@ -172,7 +170,7 @@ namespace Faroosom.ConsoleApp
         static void Init()
         {
             var options = new DbContextOptionsBuilder<FaroosomContext>()
-                .UseSqlServer("Server=localhost;Database=Faroosomdb;Trusted_Connection=True;").Options;
+                .UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=Faroosomdb;Trusted_Connection=True;").Options;
             var context = new FaroosomContext(options);
             _userService = new UserService(context);
             _messageService = new MessageServise(context);

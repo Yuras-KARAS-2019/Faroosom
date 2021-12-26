@@ -29,8 +29,7 @@ namespace Faroosom.API
             var connectionString = Configuration["ConnectionString"];
             services.AddDbContext<FaroosomContext>(options =>
                 options.UseSqlServer(connectionString, opt => opt.MigrationsAssembly(typeof(FaroosomContext).Assembly.GetName().Name)));
-            
-            
+
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IMessageService, MessageServise>();
 

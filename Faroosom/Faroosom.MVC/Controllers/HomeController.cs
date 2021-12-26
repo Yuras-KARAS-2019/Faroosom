@@ -1,12 +1,7 @@
 ﻿using Faroosom.BLL.DTO.User;
 using Faroosom.BLL.Interfaces;
-using Faroosom.MVC.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Security.Authentication;
 using System.Threading.Tasks;
 
@@ -30,7 +25,7 @@ namespace Faroosom.MVC.Controllers
         {
             try
             {
-                Global.User = await  _userService.GetUserByCredentialsAsync(dto);
+                Global.User = await _userService.GetUserByCredentialsAsync(dto);
                 return View();
             }
             catch (AuthenticationException)
@@ -42,7 +37,7 @@ namespace Faroosom.MVC.Controllers
         }
 
         [HttpPost]
-        public IActionResult SignOut()
+        new public IActionResult SignOut()
         {
             Global.User = null;
             return RedirectToAction("Index", "Home");

@@ -18,7 +18,6 @@ namespace Faroosom.API.Controllers
             _userService = userService ?? throw new ArgumentNullException(nameof(userService));
         }
 
-
         [HttpGet]
         public async Task<ActionResult<ICollection<UserDto>>> GetAll()
         {
@@ -28,7 +27,15 @@ namespace Faroosom.API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<UserDto>> GetById(int id)
         {
-            return Ok(await _userService.GetUserByIdAsync(id));
+            try
+            {
+                return Ok(await _userService.GetUserByIdAsync(id));
+            }
+            catch (KeyNotFoundException)
+            {
+
+                return NotFound();
+            }
         }
 
         [HttpGet("{id}/subscribers")]

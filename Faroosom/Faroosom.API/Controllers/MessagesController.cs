@@ -1,12 +1,8 @@
 ﻿using Faroosom.BLL.DTO.Message;
-using Faroosom.BLL.DTO.User;
 using Faroosom.BLL.Interfaces;
-using Faroosom.BLL.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Faroosom.API.Controllers
@@ -29,7 +25,7 @@ namespace Faroosom.API.Controllers
 
         [HttpPost]
         public async Task<ActionResult<MessageDto>> Create([FromBody] CreateMessageDto dto)
-{
+        {
             return Ok(await _messageService.SendMessageAsync(dto));
         }
     }

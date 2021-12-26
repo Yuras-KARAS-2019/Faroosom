@@ -29,6 +29,7 @@ namespace Faroosom.MVC
 
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IMessageService, MessageServise>();
+
             services.AddControllersWithViews();
         }
 

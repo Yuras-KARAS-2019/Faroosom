@@ -161,7 +161,6 @@ namespace Faroosom.APIClient
                     _user = await response.Content.ReadFromJsonAsync<User>();
                     Console.WriteLine($"Welcome {_user.Name} {_user.LastName}!");
                     logined = true;
-
                 }
             }
         }

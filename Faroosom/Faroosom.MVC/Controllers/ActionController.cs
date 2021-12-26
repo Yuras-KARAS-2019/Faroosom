@@ -16,10 +16,6 @@ namespace Faroosom.MVC.Controllers
             _userService = userService ?? throw new ArgumentNullException(nameof(userService));
             _messageService = messageService ?? throw new ArgumentNullException(nameof(messageService));
         }
-        public IActionResult Index()
-        {
-            return View();
-        }
 
         public async Task<IActionResult> ShowAllUsers()
         {

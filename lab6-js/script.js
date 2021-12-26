@@ -53,7 +53,6 @@ loginSubmit.addEventListener("click", async () => {
         alert('Incorrent login or password');
     }
 
-
 });
 
 
@@ -84,6 +83,6 @@ showChatWithUser.addEventListener('click', async () => {
 });
 
 sendMessageToUser.addEventListener('click', async () => {
-    result.innerHTML = syntaxHighlight(await sendRequest('api/messages', 'POST', { fromId: user.id, toId: prompt('Ented user id'), text: prompt('Ented user id')}));
+    result.innerHTML = syntaxHighlight(await sendRequest('api/messages', 'POST', { fromId: user.id, toId: prompt('Ented user id'), text: prompt('Ented text')}));
 });
 
